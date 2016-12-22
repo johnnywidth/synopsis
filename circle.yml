@@ -1,6 +1,4 @@
 machine:
-  services:
-    - docker
   environment:
     PROJECT_GOPATH: "${HOME}/.go_project"
     PROJECT_PARENT_PATH: "${PROJECT_GOPATH}/src/github.com/johnnywidth"
@@ -9,8 +7,6 @@ machine:
 
 dependencies:
   override:
-    - docker info
-    - docker build --rm=false -t johnnywidth/synopsis .
     - mkdir -p "${PROJECT_PARENT_PATH}"
     - rsync -avC "${HOME}/${CIRCLE_PROJECT_REPONAME}/" "${PROJECT_PATH}"
 
@@ -22,10 +18,3 @@ test:
     - cd "${PROJECT_PATH}" && ./coverage.sh
   post:
     - cd "${PROJECT_PATH}" && bash <(curl -s https://codecov.io/bash) -f coverage.txt
-
-deployment:
-  hub:
-    branch: master
-    commands:
-      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-      - docker push johnnywidth/synopsis
