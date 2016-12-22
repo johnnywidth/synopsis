@@ -12,24 +12,6 @@ But more faster, because build time not depend from quantity of repository.
     go build
     ./synopsis
 
-## Docker
-    docker run
-     -p 9091:8080
-     --name synopsis
-     -v $(pwd)/data:/data
-     -v $HOME/.ssh:/root/.ssh
-     johnnywidth/synopsis
-
-## Docker ENV Variables
-    HOST        ""                  # dy default is empty, you can set `localhost` and use nginx
-    FILE        "/data/config.json" # default path for config file with repositories
-    THREAD      50                  # default nomber of concurrent processes
-    OUTPUT      "/data/output"      # default path for archived packages
-
-## Web access
-`http://localhost:9091/` - Info about building packages.
-`http://localhost:9091/admin` - Admin panel.
-
 ## Example config.json file:
 File look like [satis](https://getcomposer.org/doc/articles/handling-private-packages-with-satis.md).
 ```
