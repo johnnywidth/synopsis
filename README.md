@@ -6,11 +6,8 @@ Synopsis - it is a tool for generate private composer package repository.
 It is work like [satis](https://getcomposer.org/doc/articles/handling-private-packages-with-satis.md).
 But more faster, because build time not depend from quantity of repository.
 
-## To run application need install [golang](https://golang.org/doc/install):
+## Need install [golang](https://golang.org/doc/install):
     go get github.com/johnnywidth/synopsis
-    cd $GOPATH/src/github.com/johnnywidth/synopsis/
-    go build
-    ./synopsis
 
 ## Example config.json file:
 File look like [satis](https://getcomposer.org/doc/articles/handling-private-packages-with-satis.md).
